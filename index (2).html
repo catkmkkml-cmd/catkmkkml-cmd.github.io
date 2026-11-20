@@ -1,0 +1,470 @@
+<title>Portfolio Pensyarah Biologi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: dark monochrome studio. Chrome 3D helix hero, subject marquee, bento of glass cards, tilted stat chips, FAQ, giant outlined footer wordmark. Deliberately single dark theme. */
+:root{
+  color-scheme:dark;
+  --bg:#050505; --bg-2:#0c0c0d; --glass:rgba(255,255,255,.035); --glass-2:rgba(255,255,255,.07);
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+  --fg:#f4f4f5; --fg-2:#a1a1aa; --fg-3:#5f5f66; --leaf:#9fe3b9;
+  --f-display:"Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body:"Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:1rem;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px;border-radius:8px}
+p{margin:0}
+h1,h2,h3{margin:0;font-family:var(--f-display);font-weight:600;letter-spacing:-.03em;line-height:1.05;text-wrap:balance}
+.wrap{max-width:72rem;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.ph{color:var(--fg);background:rgba(255,255,255,.08);border:1px dashed var(--line-2);border-radius:6px;padding:0 .3em}
+.grad{background:linear-gradient(180deg,#ffffff 15%,#8a8a92 105%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-l{background:linear-gradient(90deg,#4a4a50 0%,#ffffff 38%,#d8d8dc 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--fg-2);padding:.3rem .8rem .3rem .35rem;border:1px solid var(--line);border-radius:999px;background:var(--glass);width:max-content;max-width:100%}
+.pill b{font-family:var(--f-mono);font-weight:500;font-size:.68rem;color:#000;background:var(--fg);border-radius:999px;padding:.1rem .5rem}
+.pill.dot{padding-left:.7rem}
+.pill.dot::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--fg);box-shadow:0 0 10px var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--f-body);font-weight:500;font-size:.9rem;padding:.7rem 1.15rem;border-radius:12px;text-decoration:none;border:1px solid var(--line-2);color:var(--fg);background:var(--glass-2);cursor:pointer}
+.btn.light{background:linear-gradient(180deg,#ffffff,#d4d4d8);color:#0a0a0a;border-color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.2),0 8px 30px -8px rgba(255,255,255,.35)}
+.btn svg{width:16px;height:16px}
+@media (prefers-reduced-motion: no-preference){.btn{transition:transform .15s ease,background .2s}.btn:hover{transform:translateY(-1px)}}
+
+/* grid ground */
+.grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 60% at 60% 30%,#000 10%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 60% 30%,#000 10%,transparent 75%);opacity:.5}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(5,5,5,.6);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.8rem}
+.logo{display:flex;align-items:center;gap:.55rem;font-family:var(--f-display);font-weight:600;text-decoration:none;font-size:1rem}
+.logo i{width:26px;height:26px;border-radius:8px;background:linear-gradient(145deg,#fff,#6b6b72);display:grid;place-items:center}
+.logo i svg{width:16px;height:16px}
+.links{display:flex;gap:1.6rem}
+.links a{font-size:.85rem;color:var(--fg-2);text-decoration:none}
+.links a:hover{color:var(--fg)}
+@media (max-width:760px){.links{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:2rem;padding-block:clamp(3rem,8vw,6rem) clamp(2.5rem,6vw,4.5rem)}
+.hero-text{display:flex;flex-direction:column;gap:1.4rem;min-width:0;position:relative;z-index:2}
+.hero h1{font-size:clamp(2.7rem,7vw,5.2rem)}
+.hero .sub{color:var(--fg-2);font-size:1.08rem;max-width:30rem}
+.hero .acts{display:flex;gap:.75rem;flex-wrap:wrap}
+.stage{position:relative;aspect-ratio:1/1.05;width:100%;max-width:100%;min-width:0}
+.stage canvas{position:absolute;inset:-8% -12%;width:124%;height:116%;cursor:grab;touch-action:pan-y}
+.stage .halo{position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.13),transparent 65%);filter:blur(10px)}
+.stage .cap{position:absolute;right:0;bottom:6%;font-family:var(--f-mono);font-size:.7rem;color:var(--fg-3);display:flex;align-items:center;gap:.5rem}
+.stage .cap::before{content:"";width:48px;height:2px;background:var(--fg-2)}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.stage{max-width:420px;justify-self:center;width:100%}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;gap:3.2rem;width:max-content;padding-block:1.3rem}
+.track span{display:flex;align-items:center;gap:.6rem;font-family:var(--f-display);font-weight:600;font-size:1.05rem;color:var(--fg-2);white-space:nowrap}
+.track span svg{width:18px;height:18px;opacity:.8}
+@media (prefers-reduced-motion: no-preference){.track{animation:slide 38s linear infinite}@keyframes slide{to{transform:translateX(-50%)}}}
+
+/* sections */
+.sec{position:relative}
+.sec>.wrap{padding-block:clamp(3.5rem,8vw,6rem);display:flex;flex-direction:column;gap:2.2rem}
+.head{display:flex;flex-direction:column;gap:1rem;max-width:40rem}
+.head h2{font-size:clamp(2rem,4.6vw,3.3rem)}
+.head p{color:var(--fg-2);max-width:34rem}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.card{position:relative;overflow:hidden;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));padding:1.4rem;display:flex;flex-direction:column;gap:.8rem;min-width:0}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(600px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.08),transparent 40%)}
+.card h3{font-size:1.25rem}
+.card p{color:var(--fg-2);font-size:.92rem}
+.c-wide{grid-column:span 4}.c-nar{grid-column:span 2}.c-half{grid-column:span 3}
+@media (max-width:820px){.bento{grid-template-columns:1fr}.c-wide,.c-nar,.c-half{grid-column:auto}}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{display:flex;flex-direction:column;gap:.15rem;padding:.55rem .9rem;border:1px solid var(--line-2);border-radius:999px;background:rgba(0,0,0,.35);min-width:0}
+.chip small{font-family:var(--f-mono);font-size:.66rem;color:var(--fg-3);text-transform:uppercase;letter-spacing:.06em}
+.chip span{font-family:var(--f-mono);font-size:.85rem;font-variant-numeric:tabular-nums}
+.chip span em{font-style:normal;color:var(--fg-3)}
+.weights{display:flex;flex-direction:column;gap:.7rem;margin-top:.2rem}
+.w{display:grid;grid-template-columns:8.5rem 1fr 3rem;align-items:center;gap:.8rem;font-size:.85rem}
+.w .bar{height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.w .bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#5a5a60,#ffffff)}
+.w b{font-family:var(--f-mono);font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.w{grid-template-columns:6.5rem 1fr 2.6rem}}
+.scope{margin-top:auto;aspect-ratio:16/10;border-radius:12px;border:1px solid var(--line);background:radial-gradient(circle at 50% 50%,#1b1b1e,#060606 70%);display:grid;place-items:center;position:relative;overflow:hidden}
+.scope svg{width:78%;height:auto}
+.big{font-family:var(--f-display);font-weight:600;font-size:clamp(2.2rem,5vw,3.2rem);letter-spacing:-.04em}
+.stack{display:flex;flex-direction:column;gap:.55rem;margin-top:auto}
+.note{display:flex;justify-content:space-between;gap:.8rem;align-items:center;padding:.65rem .85rem;border-radius:12px;background:linear-gradient(180deg,#f4f4f5,#c9c9cf);color:#0a0a0a;font-size:.82rem;box-shadow:0 10px 24px -14px #000;transform:rotate(var(--rot,0deg))}
+.note small{font-family:var(--f-mono);font-size:.68rem;color:#52525b}
+
+/* stats */
+.stats-wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:2rem;align-items:center}
+@media (max-width:820px){.stats-wrap{grid-template-columns:1fr}}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;perspective:1000px}
+.tile{border-radius:20px;border:1px solid var(--line-2);background:linear-gradient(155deg,#1f1f22,#0a0a0b 70%);padding:1.3rem;display:flex;flex-direction:column;gap:.35rem;transform:rotateX(14deg) rotateY(-16deg) rotateZ(3deg);box-shadow:0 30px 50px -25px #000,inset 0 1px 0 rgba(255,255,255,.12);min-width:0}
+.tile:nth-child(2n){transform:rotateX(14deg) rotateY(-16deg) rotateZ(3deg) translateY(26px)}
+.tile .ico{width:34px;height:34px;border-radius:10px;background:linear-gradient(145deg,#fff,#7a7a80);display:grid;place-items:center;margin-bottom:.4rem}
+.tile .ico svg{width:18px;height:18px}
+.tile b{font-family:var(--f-display);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:600;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.tile span{font-size:.82rem;color:var(--fg-2)}
+@media (prefers-reduced-motion: no-preference){.tile{transition:transform .5s cubic-bezier(.2,.7,.2,1)}.tiles:hover .tile{transform:rotateX(0) rotateY(0) rotateZ(0)}}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:14px}
+.tl li{border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;background:var(--glass);display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.tl time{font-family:var(--f-mono);font-size:.75rem;color:var(--fg-3)}
+.tl h3{font-size:1.1rem}
+.tl p{font-size:.88rem;color:var(--fg-2)}
+
+/* publications */
+.pubs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.pubs li{display:grid;grid-template-columns:4rem 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);color:var(--fg-2);font-size:.95rem}
+.pubs li b{font-family:var(--f-mono);font-weight:500;color:var(--fg-3);font-size:.8rem;padding-top:.15rem}
+.pubs i{color:var(--fg)}
+
+/* faq */
+.faq-wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:2rem}
+@media (max-width:820px){.faq-wrap{grid-template-columns:1fr}}
+.faq{display:flex;flex-direction:column;gap:10px}
+.faq details{border:1px solid var(--line);border-radius:14px;background:var(--glass);padding:0 1.1rem}
+.faq details[open]{background:linear-gradient(180deg,#f4f4f5,#d4d4d8);color:#0a0a0a;border-color:#fff}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0;font-weight:500;font-size:.95rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-mono);font-size:1.1rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 1.1rem;font-size:.9rem;color:#3f3f46}
+
+/* contact */
+.cta{position:relative;overflow:hidden;border:1px solid var(--line-2);border-radius:28px;padding:clamp(1.6rem,5vw,3.2rem);background:radial-gradient(120% 140% at 100% 0%,#26262a,#070707 60%);display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
+@media (max-width:820px){.cta{grid-template-columns:1fr}}
+.cta h2{font-size:clamp(2rem,4.5vw,3rem)}
+.cta p{color:var(--fg-2);margin-top:.8rem}
+.rows{display:flex;flex-direction:column;gap:10px;min-width:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.85rem 1rem;border:1px solid var(--line);border-radius:14px;background:rgba(0,0,0,.35);min-width:0}
+.row div{display:flex;flex-direction:column;min-width:0}
+.row small{font-family:var(--f-mono);font-size:.68rem;color:var(--fg-3);text-transform:uppercase;letter-spacing:.06em}
+.row span{font-size:.92rem;word-break:break-word}
+.row #emel{user-select:all}
+.copy{font-family:var(--f-mono);font-size:.72rem;color:var(--fg);background:var(--glass-2);border:1px solid var(--line-2);border-radius:8px;padding:.35rem .65rem;cursor:pointer;flex:none}
+
+/* footer */
+footer{border-top:1px solid var(--line);overflow:hidden}
+footer .wrap{padding-block:2.2rem 0;display:flex;flex-direction:column;gap:1.4rem}
+.foot-top{display:flex;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;font-size:.85rem;color:var(--fg-2)}
+.foot-top nav{display:flex;gap:1.3rem;flex-wrap:wrap}
+.foot-top a{text-decoration:none}
+.foot-top a:hover{color:var(--fg)}
+.mark{font-family:var(--f-display);font-weight:700;letter-spacing:-.06em;line-height:.8;font-size:clamp(4rem,19vw,15rem);text-align:center;background:linear-gradient(180deg,#ffffff 0%,#3a3a3f 85%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;margin-bottom:-.12em}
+.mark span{-webkit-text-stroke:1.5px #8a8a90;color:transparent;background:none}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#utama"><i><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12s10 6 10 6"/><path d="M8.5 7h7M8.5 17h7"/></svg></i>[Nama Anda]</a>
+    <nav class="links" aria-label="Bahagian">
+      <a href="#kursus">Kursus</a><a href="#pencapaian">Pencapaian</a><a href="#pengalaman">Pengalaman</a><a href="#soalan">Soalan</a>
+    </nav>
+    <a class="btn light" href="#hubungi">Hubungi</a>
+  </div>
+</header>
+
+<main id="utama">
+  <section class="hero">
+    <div class="grid-bg"></div>
+    <div class="wrap">
+      <div class="hero-text">
+        <span class="pill"><b>Baharu</b>Sesi 2026/2027 · Kolej Matrikulasi Kedah</span>
+        <h1 class="grad">Biologi diajar di makmal, bukan sekadar di slaid</h1>
+        <p class="sub">Saya <span class="ph">[Nama Penuh Anda]</span>, pensyarah Biologi SB015 yang membimbing pelajar matrikulasi melalui kuliah, tutorial dan amali.</p>
+        <div class="acts">
+          <a class="btn light" href="#kursus">Lihat kursus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn" href="#hubungi">Hubungi saya</a>
+        </div>
+      </div>
+      <figure class="stage" role="img" aria-label="Model 3D heliks DNA berkilat seperti krom">
+        <div class="halo"></div>
+        <canvas id="dna3d" aria-hidden="true"></canvas>
+        <figcaption class="cap">2 nm · 10 pb/pusingan</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="marquee" aria-label="Bidang yang diajar">
+    <div class="track">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="13" cy="11" r="3"/></svg>Biologi Sel</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6M17 3c0 6-10 6-10 12s10 6 10 6"/></svg>Genetik</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21V10M12 10c0-4 3-7 8-7 0 5-3 7-8 7zM12 14c0-3-2-5-7-5 0 4 2 5 7 5z"/></svg>Ekologi</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg>Fisiologi</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="9" r="4"/><circle cx="16" cy="15" r="3"/><circle cx="7" cy="17" r="2"/></svg>Mikrobiologi</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg>Biokimia</span>
+      <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="13" cy="11" r="3"/></svg>Biologi Sel</span>
+      <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6M17 3c0 6-10 6-10 12s10 6 10 6"/></svg>Genetik</span>
+      <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21V10M12 10c0-4 3-7 8-7 0 5-3 7-8 7zM12 14c0-3-2-5-7-5 0 4 2 5 7 5z"/></svg>Ekologi</span>
+      <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg>Fisiologi</span>
+      <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="9" r="4"/><circle cx="16" cy="15" r="3"/><circle cx="7" cy="17" r="2"/></svg>Mikrobiologi</span>
+      <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg>Biokimia</span>
+    </div>
+  </div>
+
+  <section class="sec" id="kursus">
+    <div class="wrap">
+      <div class="head">
+        <span class="pill dot">Kursus</span>
+        <h2 class="grad-l">Amali SB015 yang membina kemahiran sebenar</h2>
+        <p>Penilaian Berterusan (PB) amali membawa 40% markah keseluruhan, dari empat komponen.</p>
+      </div>
+      <div class="bento">
+        <article class="card c-wide">
+          <h3>Pecahan markah PB</h3>
+          <p>Markah mentah setiap komponen ditukar kepada pemberatnya.</p>
+          <div class="chips">
+            <div class="chip"><small>Laporan Amali</small><span>/25 <em>→ 10%</em></span></div>
+            <div class="chip"><small>Tugasan</small><span>/30 <em>→ 15%</em></span></div>
+            <div class="chip"><small>Ujian Praktikal</small><span>/24 <em>→ 10%</em></span></div>
+            <div class="chip"><small>eReport</small><span>/10 <em>→ 5%</em></span></div>
+          </div>
+          <div class="weights" aria-label="Pemberat setiap komponen daripada 40%">
+            <div class="w"><span>Tugasan</span><div class="bar"><i style="width:100%"></i></div><b>15%</b></div>
+            <div class="w"><span>Laporan Amali</span><div class="bar"><i style="width:66.7%"></i></div><b>10%</b></div>
+            <div class="w"><span>Ujian Praktikal</span><div class="bar"><i style="width:66.7%"></i></div><b>10%</b></div>
+            <div class="w"><span>eReport</span><div class="bar"><i style="width:33.3%"></i></div><b>5%</b></div>
+          </div>
+        </article>
+        <article class="card c-nar">
+          <h3>Mikroskopi</h3>
+          <p>Penyediaan slaid, pewarnaan dan pengukuran dengan skala mikrometer.</p>
+          <div class="scope" aria-hidden="true">
+            <svg viewBox="0 0 200 120" fill="none">
+              <line x1="20" y1="60" x2="180" y2="60" stroke="#3f3f46"/>
+              <g stroke="#52525b">
+                <line x1="20" y1="54" x2="20" y2="66"/><line x1="60" y1="54" x2="60" y2="66"/><line x1="100" y1="54" x2="100" y2="66"/><line x1="140" y1="54" x2="140" y2="66"/><line x1="180" y1="54" x2="180" y2="66"/>
+              </g>
+              <ellipse cx="78" cy="48" rx="30" ry="22" fill="rgba(255,255,255,.06)" stroke="#d4d4d8" stroke-width="1.5"/>
+              <circle cx="84" cy="44" r="7" fill="#e4e4e7"/>
+              <ellipse cx="132" cy="76" rx="24" ry="17" fill="rgba(255,255,255,.05)" stroke="#a1a1aa" stroke-width="1.5"/>
+              <circle cx="127" cy="79" r="5.5" fill="#a1a1aa"/>
+              <text x="180" y="108" text-anchor="end" fill="#71717a" font-family="JetBrains Mono, monospace" font-size="9">40× · 10 µm/div</text>
+            </svg>
+          </div>
+        </article>
+        <article class="card c-half">
+          <h3>Laporan dan eReport</h3>
+          <p>Setiap amali berakhir dengan laporan: tujuan, kaedah, keputusan dan perbincangan.</p>
+          <div class="stack">
+            <div class="note" style="--rot:-2deg"><span>Amali 1 · Mikroskop cahaya</span><small>Laporan</small></div>
+            <div class="note" style="--rot:1.5deg"><span>Amali 2 · Sel tumbuhan &amp; haiwan</span><small>eReport</small></div>
+            <div class="note" style="--rot:-1deg"><span>Amali 3 · <span class="ph" style="color:#0a0a0a">[Tajuk amali]</span></span><small>Laporan</small></div>
+          </div>
+        </article>
+        <article class="card c-half">
+          <h3>Ujian Praktikal</h3>
+          <p>Pelajar diuji secara individu pada kemahiran yang dilatih sepanjang semester.</p>
+          <div class="big grad">/24</div>
+          <p>Markah penuh Ujian Praktikal, bersamaan 10% markah keseluruhan.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pencapaian">
+    <div class="wrap stats-wrap">
+      <div class="head">
+        <span class="pill dot">Pencapaian</span>
+        <h2 class="grad-l">Angka dari bilik kuliah dan makmal</h2>
+        <p>Ringkasan pengajaran saya bagi Semester 1 Sesi 2026/2027.</p>
+      </div>
+      <div class="tiles">
+        <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.4 3.5 5.2"/></svg></div><b>46</b><span>Pelajar amali semester ini</span></div>
+        <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg></div><b>2</b><span>Kumpulan amali: H3T3 &amp; K1T1</span></div>
+        <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><b><span class="ph">[X]</span></b><span>Tahun pengalaman mengajar</span></div>
+        <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><path d="M4 19V5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2zM8 7h6"/></svg></div><b>SB015</b><span>Kursus Biologi yang diajar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pengalaman">
+    <div class="wrap">
+      <div class="head">
+        <span class="pill dot">Pengalaman</span>
+        <h2 class="grad-l">Perjalanan kerjaya</h2>
+      </div>
+      <ol class="tl">
+        <li><time><span class="ph">[Tahun]</span> – kini</time><h3>Pensyarah Biologi</h3><p>Unit Biologi, Kolej Matrikulasi Kedah</p></li>
+        <li><time><span class="ph">[Tahun – Tahun]</span></time><h3><span class="ph">[Jawatan sebelum ini]</span></h3><p><span class="ph">[Institusi]</span></p></li>
+        <li><time><span class="ph">[Tahun]</span></time><h3><span class="ph">[Ijazah tertinggi]</span></h3><p><span class="ph">[Universiti]</span></p></li>
+        <li><time><span class="ph">[Tahun]</span></time><h3><span class="ph">[Ijazah Sarjana Muda]</span></h3><p><span class="ph">[Universiti]</span></p></li>
+      </ol>
+      <ul class="pubs" aria-label="Penerbitan terpilih">
+        <li><b><span class="ph">[Tahun]</span></b><span><span class="ph">[Nama Pengarang]</span>. <i><span class="ph">[Tajuk artikel]</span></i>. <span class="ph">[Nama jurnal]</span>.</span></li>
+        <li><b><span class="ph">[Tahun]</span></b><span><span class="ph">[Nama Pengarang]</span>. <i><span class="ph">[Tajuk kertas persidangan]</span></i>. <span class="ph">[Persidangan]</span>.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="soalan">
+    <div class="wrap faq-wrap">
+      <div class="head">
+        <span class="pill dot">Soalan lazim</span>
+        <h2 class="grad-l">Soalan daripada pelajar</h2>
+        <p>Jawapan ringkas bagi soalan yang paling kerap ditanya tentang amali.</p>
+      </div>
+      <div class="faq">
+        <details open><summary>Bagaimana markah PB amali dikira?</summary><p>PB bernilai 40%: Laporan Amali 10% (daripada 25), Tugasan 15% (daripada 30), Ujian Praktikal 10% (daripada 24) dan eReport 5% (daripada 10).</p></details>
+        <details><summary>Bila tarikh akhir laporan amali?</summary><p><span class="ph" style="color:#0a0a0a">[Contoh: seminggu selepas sesi amali, sebelum jam 5 petang.]</span></p></details>
+        <details><summary>Bila waktu konsultasi?</summary><p><span class="ph" style="color:#0a0a0a">[Hari dan masa konsultasi anda, serta lokasi bilik.]</span></p></details>
+        <details><summary>Apa yang perlu dibawa ke makmal?</summary><p>Kot makmal, buku amali, alat tulis dan kasut bertutup. <span class="ph" style="color:#0a0a0a">[Tambah jika ada.]</span></p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="hubungi">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2 class="grad">Ada soalan tentang kursus atau kerjasama?</h2>
+          <p>Hubungi saya melalui e-mel, atau datang ke Unit Biologi semasa waktu konsultasi.</p>
+        </div>
+        <div class="rows">
+          <div class="row"><div><small>E-mel</small><span id="emel">[emel.anda@contoh.edu.my]</span></div><button class="copy" type="button" data-copy="emel">Salin</button></div>
+          <div class="row"><div><small>Pejabat</small><span>Unit Biologi, Kolej Matrikulasi Kedah</span></div></div>
+          <div class="row"><div><small>Pautan</small><span><a href="https://scholar.google.com" target="_blank" rel="noopener">[Google Scholar]</a> · <a href="https://www.linkedin.com" target="_blank" rel="noopener">[LinkedIn]</a></span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <span>© 2026 [Nama Anda] · Unit Biologi, Kolej Matrikulasi Kedah</span>
+      <nav aria-label="Pautan kaki"><a href="#kursus">Kursus</a><a href="#pencapaian">Pencapaian</a><a href="#pengalaman">Pengalaman</a><a href="#hubungi">Hubungi</a></nav>
+    </div>
+    <div class="mark" aria-hidden="true">BIO<span>logi</span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(() => {
+  const cv = document.getElementById('dna3d');
+  if (!cv || !window.THREE) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas: cv, antialias: true, alpha: true}); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+  camera.position.set(0, 0, 17);
+
+  // chrome matcap drawn on a canvas
+  function matcap(dark) {
+    const c = document.createElement('canvas'); c.width = c.height = 256;
+    const g = c.getContext('2d');
+    g.fillStyle = '#000'; g.fillRect(0, 0, 256, 256);
+    g.save(); g.beginPath(); g.arc(128, 128, 128, 0, Math.PI * 2); g.clip();
+    const lin = g.createLinearGradient(0, 0, 0, 256);
+    lin.addColorStop(0, dark ? '#bdbdc2' : '#ffffff');
+    lin.addColorStop(.34, dark ? '#6e6e74' : '#d6d6da');
+    lin.addColorStop(.5, '#141416');
+    lin.addColorStop(.6, '#5a5a60');
+    lin.addColorStop(.82, dark ? '#9a9aa0' : '#e9e9ec');
+    lin.addColorStop(1, '#2a2a2e');
+    g.fillStyle = lin; g.fillRect(0, 0, 256, 256);
+    const rad = g.createRadialGradient(128, 128, 60, 128, 128, 130);
+    rad.addColorStop(0, 'rgba(0,0,0,0)'); rad.addColorStop(1, 'rgba(0,0,0,.65)');
+    g.fillStyle = rad; g.fillRect(0, 0, 256, 256);
+    const hi = g.createRadialGradient(92, 70, 0, 92, 70, 40);
+    hi.addColorStop(0, 'rgba(255,255,255,.95)'); hi.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = hi; g.fillRect(0, 0, 256, 256);
+    g.restore();
+    const t = new THREE.CanvasTexture(c);
+    return t;
+  }
+  const chrome = new THREE.MeshMatcapMaterial({matcap: matcap(false)});
+  const steel = new THREE.MeshMatcapMaterial({matcap: matcap(true)});
+
+  const dna = new THREE.Group();
+  dna.rotation.z = 0.42;
+  scene.add(dna);
+  const N = 30, R = 2, step = 0.4, turn = (Math.PI * 2) / 10;
+  const up = new THREE.Vector3(0, 1, 0);
+  const strand = (ph) => {
+    const pts = [];
+    for (let i = 0; i <= (N - 1) * 6; i++) {
+      const k = i / 6, a = k * turn + ph;
+      pts.push(new THREE.Vector3(Math.cos(a) * R, (k - (N - 1) / 2) * step, Math.sin(a) * R));
+    }
+    return new THREE.CatmullRomCurve3(pts);
+  };
+  [0, Math.PI].forEach((ph) => dna.add(new THREE.Mesh(new THREE.TubeGeometry(strand(ph), 360, 0.2, 18, false), chrome)));
+  const rod = new THREE.CylinderGeometry(0.075, 0.075, 1, 12);
+  const node = new THREE.SphereGeometry(0.17, 18, 12);
+  for (let i = 0; i < N; i++) {
+    const y = (i - (N - 1) / 2) * step, a = i * turn;
+    const p1 = new THREE.Vector3(Math.cos(a) * R, y, Math.sin(a) * R);
+    const p2 = new THREE.Vector3(Math.cos(a + Math.PI) * R, y, Math.sin(a + Math.PI) * R);
+    const c = new THREE.Mesh(rod, steel);
+    c.scale.y = p1.distanceTo(p2);
+    c.position.copy(p1).add(p2).multiplyScalar(.5);
+    c.quaternion.setFromUnitVectors(up, p2.clone().sub(p1).normalize());
+    dna.add(c);
+    const m = new THREE.Mesh(node, chrome); m.position.copy(c.position); dna.add(m);
+  }
+  // floating chrome "cells"
+  const cells = [];
+  [[-4.2, 3.4, -1, .55], [4.1, -3.6, 0, .4], [3.6, 3.9, -2, .28], [-3.8, -4.2, -1.5, .32]].forEach(([x, y, z, s]) => {
+    const m = new THREE.Mesh(new THREE.SphereGeometry(s, 32, 24), chrome);
+    m.position.set(x, y, z); m.userData.base = y; scene.add(m); cells.push(m);
+  });
+
+  function size() {
+    const w = cv.clientWidth, h = cv.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  let tx = 0, ty = 0, drag = false, lastX = 0, spin = 0, t = 0;
+  cv.addEventListener('pointermove', (e) => {
+    const b = cv.getBoundingClientRect();
+    tx = (e.clientX - b.left) / b.width - .5; ty = (e.clientY - b.top) / b.height - .5;
+    if (drag) { spin += (e.clientX - lastX) * 0.012; lastX = e.clientX; }
+  });
+  cv.addEventListener('pointerdown', (e) => { drag = true; lastX = e.clientX; cv.style.cursor = 'grabbing'; });
+  addEventListener('pointerup', () => { drag = false; cv.style.cursor = ''; });
+  cv.addEventListener('pointerleave', () => { tx = ty = 0; });
+  function frame() {
+    if (!reduce.matches) t += 0.005;
+    dna.rotation.y = t + spin;
+    dna.rotation.x += (ty * .45 - dna.rotation.x) * .05;
+    dna.position.x += (tx * 1.1 - dna.position.x) * .05;
+    cells.forEach((m, i) => { m.position.y = m.userData.base + Math.sin(t * 2 + i) * .25; });
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  new ResizeObserver(size).observe(cv);
+  size(); frame();
+})();
+
+// cursor glow on cards
+document.querySelectorAll('.card').forEach((el) => el.addEventListener('pointermove', (e) => {
+  const b = el.getBoundingClientRect();
+  el.style.setProperty('--mx', (e.clientX - b.left) + 'px');
+  el.style.setProperty('--my', (e.clientY - b.top) + 'px');
+}));
+
+document.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', () => {
+  const el = document.getElementById(b.dataset.copy);
+  const text = el.textContent.trim();
+  const done = () => { b.textContent = 'Disalin'; setTimeout(() => { b.textContent = 'Salin'; }, 1500); };
+  const pick = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText(text).then(done, pick); } catch (e) { pick(); }
+}));
+</script>
