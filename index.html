@@ -1,0 +1,252 @@
+<title>Portfolio Pensyarah Biologi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a microscope-field hero; sections are specimen sheets with mono labels on a lab-paper ground. */
+:root{
+  --paper:#f3f6f1; --sheet:#ffffff; --ink:#14251b; --ink-soft:#4b5f52; --rule:#d5e0d6;
+  --chloro:#1f6b3f; --chloro-soft:#e1efe5; --stain:#6b3fa0; --stain-soft:#eee6f7; --iodine:#b5641c;
+  --f-display:"Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body:"Newsreader", Georgia, "Times New Roman", serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0d1611; --sheet:#141f18; --ink:#e6eee8; --ink-soft:#9fb1a5; --rule:#26362c;
+  --chloro:#5fc189; --chloro-soft:#173323; --stain:#b893ea; --stain-soft:#2a1f3a; --iodine:#e3a160; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0d1611; --sheet:#141f18; --ink:#e6eee8; --ink-soft:#9fb1a5; --rule:#26362c;
+  --chloro:#5fc189; --chloro-soft:#173323; --stain:#b893ea; --stain-soft:#2a1f3a; --iodine:#e3a160; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:1.125rem;line-height:1.6;margin:0}
+a{color:var(--chloro);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--stain);outline-offset:3px;border-radius:4px}
+.wrap{max-width:68rem;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.label{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:600}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+.ph{background:var(--stain-soft);color:var(--stain);border-radius:3px;padding:0 .25em;font-style:normal}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--paper)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.75rem}
+.brand{font-family:var(--f-display);font-weight:700;font-size:1.05rem;color:var(--ink);text-decoration:none}
+.nav{display:flex;gap:1.1rem;flex-wrap:wrap}
+.nav a{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none}
+.nav a:hover{color:var(--chloro)}
+@media (max-width:640px){.nav{display:none}}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;padding-block:clamp(2.5rem,7vw,5rem)}
+.hero-text{display:flex;flex-direction:column;gap:1.1rem;min-width:0}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;letter-spacing:-.02em}
+.hero .role{font-size:1.3rem;color:var(--ink-soft)}
+.hero .role em{color:var(--chloro);font-style:italic}
+.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.4rem}
+.btn{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.04em;padding:.7rem 1.1rem;border-radius:999px;border:1.5px solid var(--chloro);text-decoration:none;cursor:pointer;background:transparent;color:var(--chloro)}
+.btn.solid{background:var(--chloro);color:var(--paper)}
+.btn:hover{transform:translateY(-1px)}
+.field{position:relative;aspect-ratio:1;max-width:100%;width:100%;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--sheet) 0%,var(--chloro-soft) 78%,var(--paper) 100%);box-shadow:inset 0 0 0 10px var(--sheet),inset 0 0 0 11px var(--rule),0 18px 50px -30px var(--chloro);overflow:hidden}
+.field canvas{position:absolute;inset:0;width:100%;height:100%}
+.field figcaption{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--f-mono);font-size:.7rem;color:var(--ink-soft)}
+.field figcaption i{display:block;width:72px;height:3px;background:var(--ink)}
+figure{margin:0}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}.field{max-width:340px;justify-self:center}}
+
+/* sections */
+section.sec .wrap{padding-block:clamp(2.5rem,6vw,4rem);display:flex;flex-direction:column;gap:1.75rem;border-top:1px solid var(--rule)}
+.sec-head{display:flex;flex-direction:column;gap:.4rem;max-width:42rem}
+.lede{max-width:40rem;color:var(--ink)}
+.lede + .lede{margin-top:1rem}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1rem}
+.fact{border-left:3px solid var(--chloro);padding:.2rem 0 .2rem 1rem;display:flex;flex-direction:column;gap:.2rem}
+.fact b{font-family:var(--f-display);font-size:1.6rem;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* specimen-label cards */
+.specimens{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem}
+.spec{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.spec .tag{display:flex;justify-content:space-between;gap:.5rem;font-family:var(--f-mono);font-size:.72rem;color:var(--ink-soft);border-bottom:1px dashed var(--rule);padding-bottom:.55rem}
+.spec .tag span:last-child{color:var(--chloro)}
+.spec p{font-size:1rem;color:var(--ink-soft)}
+
+/* timeline: real chronological order */
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.timeline li{display:grid;grid-template-columns:8.5rem 1fr;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--rule)}
+.timeline time{font-family:var(--f-mono);font-size:.85rem;color:var(--chloro);font-variant-numeric:tabular-nums;padding-top:.15rem}
+.timeline div{display:flex;flex-direction:column;gap:.25rem;min-width:0}
+.timeline p{font-size:1rem;color:var(--ink-soft)}
+@media (max-width:520px){.timeline li{grid-template-columns:1fr;gap:.3rem}}
+
+/* publications */
+.pubs{margin:0;padding-left:1.4rem;display:flex;flex-direction:column;gap:.9rem;max-width:46rem}
+.pubs li{padding-left:.3rem}
+.pubs li::marker{font-family:var(--f-mono);color:var(--ink-soft);font-size:.85rem}
+
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font-family:var(--f-mono);font-size:.8rem;padding:.35rem .75rem;border-radius:999px;background:var(--chloro-soft);color:var(--ink)}
+.chip.v{background:var(--stain-soft)}
+
+/* contact */
+.contact{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:clamp(1.25rem,3vw,2rem);display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
+.contact .row{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.contact .val{font-family:var(--f-mono);font-size:.95rem;word-break:break-word;user-select:all}
+.copy{align-self:flex-start;font-family:var(--f-mono);font-size:.75rem;background:none;border:1px solid var(--rule);color:var(--ink-soft);border-radius:999px;padding:.25rem .7rem;cursor:pointer}
+footer .wrap{padding-block:2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--rule)}
+@media (prefers-reduced-motion: no-preference){.btn{transition:transform .15s ease}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#utama">[Nama Anda]</a>
+    <nav class="nav" aria-label="Bahagian">
+      <a href="#tentang">Tentang</a>
+      <a href="#pengajaran">Pengajaran</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#penerbitan">Penerbitan</a>
+      <a href="#hubungi">Hubungi</a>
+    </nav>
+  </div>
+</header>
+
+<main id="utama">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <span class="label">Pensyarah Biologi · Kolej Matrikulasi Kedah</span>
+        <h1><span class="ph">[Nama Penuh Anda]</span></h1>
+        <p class="role">Mengajar Biologi peringkat matrikulasi, dengan minat dalam <em>biologi sel</em> dan pengajaran amali makmal.</p>
+        <div class="actions">
+          <a class="btn solid" href="#hubungi">Hubungi saya</a>
+          <a class="btn" href="#pengajaran">Lihat kursus</a>
+        </div>
+      </div>
+      <figure class="field" aria-label="Ilustrasi medan mikroskop dengan sel-sel">
+        <canvas id="sel" aria-hidden="true"></canvas>
+        <figcaption><i></i>10 µm</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec" id="tentang">
+    <div class="wrap">
+      <div class="sec-head"><span class="label">01 · Tentang</span><h2>Tentang saya</h2></div>
+      <div>
+        <p class="lede">Saya pensyarah di Unit Biologi, Kolej Matrikulasi Kedah. Saya mengajar kursus Biologi untuk pelajar Program Matrikulasi, termasuk kuliah, tutorial dan amali makmal. <span class="ph">[Tambah satu ayat tentang latar belakang anda.]</span></p>
+        <p class="lede">Saya percaya pelajar paling banyak belajar di makmal: bila mereka sendiri menyediakan slaid, mengukur, mencatat dan menulis laporan amali. <span class="ph">[Ubah ikut falsafah pengajaran anda.]</span></p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b><span class="ph">[X]</span> tahun</b><span class="label">Pengalaman mengajar</span></div>
+        <div class="fact"><b>SB015</b><span class="label">Kursus yang diajar</span></div>
+        <div class="fact"><b><span class="ph">[Ijazah]</span></b><span class="label">Kelayakan tertinggi</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pengajaran">
+    <div class="wrap">
+      <div class="sec-head"><span class="label">02 · Pengajaran</span><h2>Kursus dan komponen</h2><p class="lede">Penilaian Berterusan (PB) amali membawa 40% markah, dari empat komponen.</p></div>
+      <div class="specimens">
+        <article class="spec"><div class="tag"><span>PB · 10%</span><span>/25</span></div><h3>Laporan Amali</h3><p>Pelajar menulis laporan bagi setiap amali: tujuan, kaedah, keputusan dan perbincangan.</p></article>
+        <article class="spec"><div class="tag"><span>PB · 15%</span><span>/30</span></div><h3>Tugasan</h3><p>Tugasan berkumpulan atau individu yang menghubungkan teori kuliah dengan kerja makmal.</p></article>
+        <article class="spec"><div class="tag"><span>PB · 10%</span><span>/24</span></div><h3>Ujian Praktikal</h3><p>Ujian kemahiran amali seperti penggunaan mikroskop, penyediaan slaid dan pengukuran.</p></article>
+        <article class="spec"><div class="tag"><span>PB · 5%</span><span>/10</span></div><h3>eReport</h3><p>Laporan digital yang dihantar dalam talian mengikut format yang ditetapkan.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pengalaman">
+    <div class="wrap">
+      <div class="sec-head"><span class="label">03 · Pengalaman</span><h2>Perjalanan kerjaya</h2></div>
+      <ol class="timeline">
+        <li><time><span class="ph">[Tahun]</span> – kini</time><div><h3>Pensyarah Biologi</h3><p>Unit Biologi, Kolej Matrikulasi Kedah</p></div></li>
+        <li><time><span class="ph">[Tahun – Tahun]</span></time><div><h3><span class="ph">[Jawatan sebelum ini]</span></h3><p><span class="ph">[Institusi]</span></p></div></li>
+        <li><time><span class="ph">[Tahun]</span></time><div><h3><span class="ph">[Ijazah tertinggi, bidang]</span></h3><p><span class="ph">[Universiti]</span></p></div></li>
+        <li><time><span class="ph">[Tahun]</span></time><div><h3><span class="ph">[Ijazah Sarjana Muda, bidang]</span></h3><p><span class="ph">[Universiti]</span></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="penerbitan">
+    <div class="wrap">
+      <div class="sec-head"><span class="label">04 · Penerbitan &amp; kepakaran</span><h2>Penerbitan terpilih</h2></div>
+      <ol class="pubs">
+        <li><span class="ph">[Nama Pengarang]</span> (<span class="ph">[Tahun]</span>). <i><span class="ph">[Tajuk artikel]</span></i>. <span class="ph">[Nama jurnal]</span>, <span class="ph">[jilid(isu)]</span>, <span class="ph">[muka surat]</span>.</li>
+        <li><span class="ph">[Nama Pengarang]</span> (<span class="ph">[Tahun]</span>). <i><span class="ph">[Tajuk kertas persidangan]</span></i>. <span class="ph">[Nama persidangan]</span>.</li>
+      </ol>
+      <div class="chips" aria-label="Bidang kepakaran">
+        <span class="chip">Biologi Sel</span><span class="chip">Mikroskopi</span><span class="chip">Pengajaran Amali</span><span class="chip v">[Bidang lain]</span><span class="chip v">[Bidang lain]</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="hubungi">
+    <div class="wrap">
+      <div class="sec-head"><span class="label">05 · Hubungi</span><h2>Hubungi saya</h2><p class="lede">Untuk pertanyaan kursus, kerjasama atau jemputan ceramah.</p></div>
+      <div class="contact">
+        <div class="row"><span class="label">E-mel</span><span class="val" id="emel">[emel.anda@contoh.edu.my]</span><button class="copy" type="button" data-copy="emel">Salin</button></div>
+        <div class="row"><span class="label">Pejabat</span><span class="val">Unit Biologi, Kolej Matrikulasi Kedah</span></div>
+        <div class="row"><span class="label">Pautan</span><span class="val"><a href="https://scholar.google.com" target="_blank" rel="noopener">[Google Scholar]</a> · <a href="https://www.linkedin.com" target="_blank" rel="noopener">[LinkedIn]</a></span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span class="label">© 2026 [Nama Anda]</span><span class="label">Dihos di GitHub Pages</span></div>
+</footer>
+
+<script>
+(() => {
+  const cv = document.getElementById('sel');
+  if (!cv) return;
+  const ctx = cv.getContext('2d');
+  const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  let seed = 7;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const cells = Array.from({length: 11}, () => ({x: rnd(), y: rnd(), r: 0.07 + rnd() * 0.06, a: rnd() * Math.PI, s: 0.75 + rnd() * 0.25, n: rnd()}));
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  let t = 0;
+  function draw() {
+    const dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+    if (!w) return;
+    if (cv.width !== w * dpr) { cv.width = w * dpr; cv.height = h * dpr; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    const green = css('--chloro'), violet = css('--stain'), ink = css('--rule');
+    // reticle
+    ctx.strokeStyle = ink; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(w * .1, h / 2); ctx.lineTo(w * .9, h / 2); ctx.stroke();
+    for (let i = 0; i <= 20; i++) { const x = w * .1 + i * w * .04, k = i % 5 ? 4 : 9; ctx.beginPath(); ctx.moveTo(x, h / 2 - k); ctx.lineTo(x, h / 2 + k); ctx.stroke(); }
+    cells.forEach((c, i) => {
+      const dx = Math.sin(t * .4 + i) * 3, dy = Math.cos(t * .3 + i * 2) * 3;
+      const cx = c.x * w + dx, cy = c.y * h + dy, rx = c.r * w, ry = rx * c.s;
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(c.a + t * .02);
+      ctx.globalAlpha = .18; ctx.fillStyle = green;
+      ctx.beginPath(); ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = .7; ctx.strokeStyle = green; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.globalAlpha = .85; ctx.fillStyle = violet;
+      ctx.beginPath(); ctx.arc(rx * (c.n - .5) * .5, ry * (.5 - c.n) * .4, rx * .28, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    });
+    ctx.globalAlpha = 1;
+  }
+  function loop() { t += .016; draw(); if (!reduce.matches) requestAnimationFrame(loop); }
+  new ResizeObserver(draw).observe(cv);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
+  new MutationObserver(draw).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+  loop();
+})();
+document.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', () => {
+  const el = document.getElementById(b.dataset.copy);
+  const text = el.textContent.trim();
+  const done = () => { b.textContent = 'Disalin'; setTimeout(() => { b.textContent = 'Salin'; }, 1500); };
+  const pick = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText(text).then(done, pick); } catch (e) { pick(); }
+}));
+</script>
