@@ -51,10 +51,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .btn{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.04em;padding:.7rem 1.1rem;border-radius:999px;border:1.5px solid var(--chloro);text-decoration:none;cursor:pointer;background:transparent;color:var(--chloro)}
 .btn.solid{background:var(--chloro);color:var(--paper)}
 .btn:hover{transform:translateY(-1px)}
-.field{position:relative;aspect-ratio:1;max-width:100%;width:100%;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--sheet) 0%,var(--chloro-soft) 78%,var(--paper) 100%);box-shadow:inset 0 0 0 10px var(--sheet),inset 0 0 0 11px var(--rule),0 18px 50px -30px var(--chloro);overflow:hidden}
-.field canvas{position:absolute;inset:0;width:100%;height:100%}
-.field figcaption{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--f-mono);font-size:.7rem;color:var(--ink-soft)}
-.field figcaption i{display:block;width:72px;height:3px;background:var(--ink)}
+.field{position:relative;aspect-ratio:1;max-width:100%;width:100%}
+.field::before{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--sheet) 0%,var(--chloro-soft) 60%,transparent 72%);filter:blur(2px)}
+.field::after{content:"";position:absolute;left:22%;right:22%;bottom:4%;height:7%;border-radius:50%;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--chloro) 35%,transparent),transparent 70%)}
+.field canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
+.field figcaption{position:absolute;right:4%;bottom:12%;display:flex;flex-direction:column;align-items:flex-end;gap:4px;font-family:var(--f-mono);font-size:.7rem;color:var(--ink-soft);z-index:1}
+.field figcaption i{display:block;width:60px;height:3px;background:var(--ink)}
+.hero h1{text-shadow:1px 1px 0 color-mix(in srgb,var(--chloro) 45%,transparent),2px 2px 0 color-mix(in srgb,var(--chloro) 35%,transparent),3px 3px 0 color-mix(in srgb,var(--chloro) 25%,transparent),6px 10px 18px color-mix(in srgb,var(--ink) 18%,transparent)}
+.btn.solid{box-shadow:0 4px 0 color-mix(in srgb,var(--chloro) 55%,var(--ink)),0 10px 20px -10px var(--chloro)}
+.btn.solid:active{transform:translateY(3px);box-shadow:0 1px 0 color-mix(in srgb,var(--chloro) 55%,var(--ink))}
+.tilt{transform-style:preserve-3d;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0);box-shadow:0 1px 0 var(--rule),0 14px 30px -18px color-mix(in srgb,var(--ink) 45%,transparent)}
+.tilt:hover{box-shadow:0 1px 0 var(--rule),0 26px 44px -20px color-mix(in srgb,var(--chloro) 55%,transparent)}
+.tilt>*{transform:translateZ(18px)}
+.spec .tag{background:linear-gradient(90deg,var(--chloro-soft),transparent);margin:-1.2rem -1.3rem 0;padding:.7rem 1.3rem .55rem;border-radius:6px 6px 0 0}
+@media (prefers-reduced-motion: no-preference){.tilt{transition:transform .25s ease-out,box-shadow .25s ease}}
 figure{margin:0}
 @media (max-width:760px){.hero .wrap{grid-template-columns:1fr}.field{max-width:340px;justify-self:center}}
 
@@ -126,9 +136,9 @@ footer .wrap{padding-block:2rem;display:flex;justify-content:space-between;gap:1
           <a class="btn" href="#pengajaran">Lihat kursus</a>
         </div>
       </div>
-      <figure class="field" aria-label="Ilustrasi medan mikroskop dengan sel-sel">
-        <canvas id="sel" aria-hidden="true"></canvas>
-        <figcaption><i></i>10 µm</figcaption>
+      <figure class="field" role="img" aria-label="Model 3D heliks berganda DNA yang berputar">
+        <canvas id="dna3d" aria-hidden="true"></canvas>
+        <figcaption><i></i>2 nm · 10 pb/pusingan</figcaption>
       </figure>
     </div>
   </section>
@@ -152,10 +162,10 @@ footer .wrap{padding-block:2rem;display:flex;justify-content:space-between;gap:1
     <div class="wrap">
       <div class="sec-head"><span class="label">02 · Pengajaran</span><h2>Kursus dan komponen</h2><p class="lede">Penilaian Berterusan (PB) amali membawa 40% markah, dari empat komponen.</p></div>
       <div class="specimens">
-        <article class="spec"><div class="tag"><span>PB · 10%</span><span>/25</span></div><h3>Laporan Amali</h3><p>Pelajar menulis laporan bagi setiap amali: tujuan, kaedah, keputusan dan perbincangan.</p></article>
-        <article class="spec"><div class="tag"><span>PB · 15%</span><span>/30</span></div><h3>Tugasan</h3><p>Tugasan berkumpulan atau individu yang menghubungkan teori kuliah dengan kerja makmal.</p></article>
-        <article class="spec"><div class="tag"><span>PB · 10%</span><span>/24</span></div><h3>Ujian Praktikal</h3><p>Ujian kemahiran amali seperti penggunaan mikroskop, penyediaan slaid dan pengukuran.</p></article>
-        <article class="spec"><div class="tag"><span>PB · 5%</span><span>/10</span></div><h3>eReport</h3><p>Laporan digital yang dihantar dalam talian mengikut format yang ditetapkan.</p></article>
+        <article class="spec tilt"><div class="tag"><span>PB · 10%</span><span>/25</span></div><h3>Laporan Amali</h3><p>Pelajar menulis laporan bagi setiap amali: tujuan, kaedah, keputusan dan perbincangan.</p></article>
+        <article class="spec tilt"><div class="tag"><span>PB · 15%</span><span>/30</span></div><h3>Tugasan</h3><p>Tugasan berkumpulan atau individu yang menghubungkan teori kuliah dengan kerja makmal.</p></article>
+        <article class="spec tilt"><div class="tag"><span>PB · 10%</span><span>/24</span></div><h3>Ujian Praktikal</h3><p>Ujian kemahiran amali seperti penggunaan mikroskop, penyediaan slaid dan pengukuran.</p></article>
+        <article class="spec tilt"><div class="tag"><span>PB · 5%</span><span>/10</span></div><h3>eReport</h3><p>Laporan digital yang dihantar dalam talian mengikut format yang ditetapkan.</p></article>
       </div>
     </div>
   </section>
@@ -188,7 +198,7 @@ footer .wrap{padding-block:2rem;display:flex;justify-content:space-between;gap:1
   <section class="sec" id="hubungi">
     <div class="wrap">
       <div class="sec-head"><span class="label">05 · Hubungi</span><h2>Hubungi saya</h2><p class="lede">Untuk pertanyaan kursus, kerjasama atau jemputan ceramah.</p></div>
-      <div class="contact">
+      <div class="contact tilt">
         <div class="row"><span class="label">E-mel</span><span class="val" id="emel">[emel.anda@contoh.edu.my]</span><button class="copy" type="button" data-copy="emel">Salin</button></div>
         <div class="row"><span class="label">Pejabat</span><span class="val">Unit Biologi, Kolej Matrikulasi Kedah</span></div>
         <div class="row"><span class="label">Pautan</span><span class="val"><a href="https://scholar.google.com" target="_blank" rel="noopener">[Google Scholar]</a> · <a href="https://www.linkedin.com" target="_blank" rel="noopener">[LinkedIn]</a></span></div>
@@ -201,46 +211,111 @@ footer .wrap{padding-block:2rem;display:flex;justify-content:space-between;gap:1
   <div class="wrap"><span class="label">© 2026 [Nama Anda]</span><span class="label">Dihos di GitHub Pages</span></div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (() => {
-  const cv = document.getElementById('sel');
-  if (!cv) return;
-  const ctx = cv.getContext('2d');
+  const cv = document.getElementById('dna3d');
+  if (!cv || !window.THREE) return;
   const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-  let seed = 7;
-  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  const cells = Array.from({length: 11}, () => ({x: rnd(), y: rnd(), r: 0.07 + rnd() * 0.06, a: rnd() * Math.PI, s: 0.75 + rnd() * 0.25, n: rnd()}));
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  let t = 0;
-  function draw() {
-    const dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
-    if (!w) return;
-    if (cv.width !== w * dpr) { cv.width = w * dpr; cv.height = h * dpr; }
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, w, h);
-    const green = css('--chloro'), violet = css('--stain'), ink = css('--rule');
-    // reticle
-    ctx.strokeStyle = ink; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(w * .1, h / 2); ctx.lineTo(w * .9, h / 2); ctx.stroke();
-    for (let i = 0; i <= 20; i++) { const x = w * .1 + i * w * .04, k = i % 5 ? 4 : 9; ctx.beginPath(); ctx.moveTo(x, h / 2 - k); ctx.lineTo(x, h / 2 + k); ctx.stroke(); }
-    cells.forEach((c, i) => {
-      const dx = Math.sin(t * .4 + i) * 3, dy = Math.cos(t * .3 + i * 2) * 3;
-      const cx = c.x * w + dx, cy = c.y * h + dy, rx = c.r * w, ry = rx * c.s;
-      ctx.save(); ctx.translate(cx, cy); ctx.rotate(c.a + t * .02);
-      ctx.globalAlpha = .18; ctx.fillStyle = green;
-      ctx.beginPath(); ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2); ctx.fill();
-      ctx.globalAlpha = .7; ctx.strokeStyle = green; ctx.lineWidth = 1.5; ctx.stroke();
-      ctx.globalAlpha = .85; ctx.fillStyle = violet;
-      ctx.beginPath(); ctx.arc(rx * (c.n - .5) * .5, ry * (.5 - c.n) * .4, rx * .28, 0, Math.PI * 2); ctx.fill();
-      ctx.restore();
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas: cv, antialias: true, alpha: true}); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  camera.position.set(0, 0, 15);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+  const key = new THREE.DirectionalLight(0xffffff, 0.9); key.position.set(5, 6, 8); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xffffff, 0.35); rim.position.set(-6, -3, -5); scene.add(rim);
+
+  const dna = new THREE.Group();
+  dna.rotation.z = 0.35;
+  scene.add(dna);
+  const matA = new THREE.MeshStandardMaterial({roughness: .35, metalness: .1});
+  const matB = new THREE.MeshStandardMaterial({roughness: .35, metalness: .1});
+  const matR1 = new THREE.MeshStandardMaterial({roughness: .5});
+  const matR2 = new THREE.MeshStandardMaterial({roughness: .5});
+  const ball = new THREE.SphereGeometry(0.34, 24, 16);
+  const rod = new THREE.CylinderGeometry(0.1, 0.1, 1, 12);
+  const N = 26, R = 1.9, step = 0.42, turn = (Math.PI * 2) / 10;
+  const up = new THREE.Vector3(0, 1, 0);
+  for (let i = 0; i < N; i++) {
+    const y = (i - (N - 1) / 2) * step, a = i * turn;
+    const p1 = new THREE.Vector3(Math.cos(a) * R, y, Math.sin(a) * R);
+    const p2 = new THREE.Vector3(Math.cos(a + Math.PI) * R, y, Math.sin(a + Math.PI) * R);
+    const s1 = new THREE.Mesh(ball, matA); s1.position.copy(p1); dna.add(s1);
+    const s2 = new THREE.Mesh(ball, matB); s2.position.copy(p2); dna.add(s2);
+    // base pair split in two halves, like A–T / G–C
+    const mid = p1.clone().add(p2).multiplyScalar(.5);
+    [[p1, mid, i % 2 ? matR1 : matR2], [mid, p2, i % 2 ? matR2 : matR1]].forEach(([u, v, m]) => {
+      const len = u.distanceTo(v) - 0.25;
+      const c = new THREE.Mesh(rod, m);
+      c.scale.y = len;
+      c.position.copy(u).add(v).multiplyScalar(.5);
+      c.quaternion.setFromUnitVectors(up, v.clone().sub(u).normalize());
+      dna.add(c);
     });
-    ctx.globalAlpha = 1;
+    if (i < N - 1) {
+      [[a, matA], [a + Math.PI, matB]].forEach(([b, m]) => {
+        const q1 = new THREE.Vector3(Math.cos(b) * R, y, Math.sin(b) * R);
+        const q2 = new THREE.Vector3(Math.cos(b + turn) * R, y + step, Math.sin(b + turn) * R);
+        const c = new THREE.Mesh(rod, m);
+        c.scale.set(.8, q1.distanceTo(q2), .8);
+        c.position.copy(q1).add(q2).multiplyScalar(.5);
+        c.quaternion.setFromUnitVectors(up, q2.clone().sub(q1).normalize());
+        dna.add(c);
+      });
+    }
   }
-  function loop() { t += .016; draw(); if (!reduce.matches) requestAnimationFrame(loop); }
-  new ResizeObserver(draw).observe(cv);
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
-  new MutationObserver(draw).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
-  loop();
+  function paint() {
+    matA.color.set(css('--chloro') || '#1f6b3f');
+    matB.color.set(css('--stain') || '#6b3fa0');
+    matR1.color.set(css('--iodine') || '#b5641c');
+    matR2.color.set('#2a9d9d');
+  }
+  paint();
+  function size() {
+    const w = cv.clientWidth, h = cv.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  let tx = 0, ty = 0, dragging = false, lastX = 0, spin = 0;
+  cv.addEventListener('pointermove', (e) => {
+    const b = cv.getBoundingClientRect();
+    tx = ((e.clientX - b.left) / b.width - .5); ty = ((e.clientY - b.top) / b.height - .5);
+    if (dragging) { spin += (e.clientX - lastX) * 0.01; lastX = e.clientX; }
+  });
+  cv.addEventListener('pointerdown', (e) => { dragging = true; lastX = e.clientX; cv.style.cursor = 'grabbing'; });
+  addEventListener('pointerup', () => { dragging = false; cv.style.cursor = ''; });
+  cv.addEventListener('pointerleave', () => { tx = ty = 0; });
+  let t = 0;
+  function frame() {
+    if (!reduce.matches) t += 0.006;
+    dna.rotation.y = t + spin;
+    dna.rotation.x += ((ty * .5) - dna.rotation.x) * .06;
+    dna.position.x += ((tx * 1.2) - dna.position.x) * .06;
+    dna.position.y = reduce.matches ? 0 : Math.sin(t * 2) * .18;
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  new ResizeObserver(size).observe(cv);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
+  new MutationObserver(paint).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+  size(); frame();
+})();
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.tilt').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      if (reduce.matches || e.pointerType === 'touch') return;
+      const b = el.getBoundingClientRect();
+      const x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
+      el.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg');
+      el.style.setProperty('--rx', (-y * 10).toFixed(2) + 'deg');
+    });
+    el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
+  });
 })();
 document.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', () => {
   const el = document.getElementById(b.dataset.copy);
